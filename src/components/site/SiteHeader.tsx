@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, Phone, X, ShieldCheck } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -35,13 +35,12 @@ export function SiteHeader() {
       )}
     >
       <div className="container-tight flex h-16 md:h-20 items-center justify-between gap-4">
-        <a href="#home" className="flex items-center gap-2.5 group">
-          <div className="grid place-items-center w-10 h-10 rounded-lg bg-navy text-white shadow-elegant transition-transform group-hover:scale-105">
-            <ShieldCheck className="w-5 h-5 text-orange-brand" strokeWidth={2.5} />
-          </div>
-          <div className={cn("flex flex-col leading-none", scrolled ? "text-navy" : "text-white drop-shadow-md")}>
-            <span className="font-extrabold text-sm md:text-base tracking-tight">NORTH TEXAS</span>
-            <span className="text-[10px] md:text-xs font-semibold tracking-[0.2em] text-orange-brand">ROOFING</span>
+        <a href="#home" className="flex items-center gap-2.5 group shrink-0">
+          <div className={cn(
+            "rounded-md transition-all",
+            scrolled ? "bg-white p-1" : "bg-white/95 backdrop-blur p-1.5 shadow-lg"
+          )}>
+            <img src="/ntr-logo.svg" alt="North Texas Roofing" className="h-8 md:h-10 w-auto" />
           </div>
         </a>
 
@@ -108,7 +107,7 @@ export function SiteHeader() {
       {open && (
         <div className="fixed inset-0 z-[60] bg-navy-deep text-white">
           <div className="container-tight flex h-20 items-center justify-between">
-            <span className="font-extrabold tracking-tight">NORTH TEXAS ROOFING</span>
+            <div className="bg-white rounded-md p-1.5"><img src="/ntr-logo.svg" alt="North Texas Roofing" className="h-8 w-auto" /></div>
             <button onClick={() => setOpen(false)} aria-label="Close menu" className="w-10 h-10 grid place-items-center">
               <X className="w-6 h-6" />
             </button>
