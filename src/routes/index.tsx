@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-  Award, CheckCircle2, ChevronDown, CloudRain, Droplets, FileText, Flame, HandCoins, Hammer, HardHat, Home, Mail, MapPin, Paintbrush, Phone, Ruler, Shield, ShieldCheck, Sparkles, Star, Sun, Timer, Umbrella, Users, Wrench, Zap
+  Award, CheckCircle2, ChevronDown, CloudRain, Droplets, FileText, Flame, HandCoins, Hammer, Home, Mail, MapPin, Paintbrush, Phone, Ruler, Shield, ShieldCheck, Sparkles, Star, Sun, Timer, Umbrella, Users, Wrench, Zap
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -729,5 +729,3 @@ function Field({ label, required, children }: { label: string; required?: boolea
   );
 }
 
-// Keep HardHat imported to avoid tree-shake warnings if unused; suppress via ref
-void HardHat;
