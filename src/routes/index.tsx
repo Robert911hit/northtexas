@@ -657,14 +657,34 @@ function Contact() {
         </div>
 
         <form
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
+            const form = e.currentTarget;
+            const fd = new FormData(form);
+            const payload = {
+              name: String(fd.get("name") || "").trim(),
+              phone: String(fd.get("phone") || "").trim(),
+              email: String(fd.get("email") || "").trim(),
+              address: String(fd.get("address") || "").trim() || null,
+              service: String(fd.get("service") || "").trim() || null,
+              contact_method: String(fd.get("contact_method") || "").trim() || null,
+              message: String(fd.get("message") || "").trim() || null,
+              status: "new",
+            };
+            if (!payload.name || !payload.email || !payload.phone) {
+              toast.error("Please fill in your name, phone, and email.");
+              return;
+            }
             setSubmitting(true);
-            setTimeout(() => {
-              setSubmitting(false);
-              toast.success("Request received!", { description: "Our team will reach out within one business day." });
-              (e.target as HTMLFormElement).reset();
-            }, 900);
+            const { supabase } = await import("@/integrations/supabase/client");
+            const { error } = await supabase.from("inquiries").insert(payload);
+            setSubmitting(false);
+            if (error) {
+              toast.error("Couldn't submit your request", { description: error.message });
+              return;
+            }
+            toast.success("Request received!", { description: "Our team will reach out within one business day." });
+            form.reset();
           }}
           className="bg-white rounded-2xl p-6 md:p-8 shadow-elegant grid gap-4"
         >
