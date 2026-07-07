@@ -1,18 +1,12 @@
-import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, Clock, ShieldCheck } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export function SiteFooter() {
   return (
     <footer className="bg-navy-deep text-white/80">
       <div className="container-tight py-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2.5 text-white">
-            <div className="grid place-items-center w-10 h-10 rounded-lg bg-white/10">
-              <ShieldCheck className="w-5 h-5 text-orange-brand" strokeWidth={2.5} />
-            </div>
-            <div className="leading-none">
-              <div className="font-extrabold">NORTH TEXAS</div>
-              <div className="text-xs tracking-[0.2em] text-orange-brand font-semibold">ROOFING</div>
-            </div>
+          <div className="inline-block bg-white rounded-md p-2">
+            <img src="/ntr-logo.svg" alt="North Texas Roofing" className="h-10 w-auto" />
           </div>
           <p className="mt-4 text-sm leading-relaxed">
             North Texas' trusted roofing experts. Premium replacement, repairs,
